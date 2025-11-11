@@ -89,7 +89,7 @@ class AddressBook(UserDict):
             if record.birthday:
                 bday_this_year = record.birthday.value.replace(year=today.year)
                 if today <= bday_this_year <= next_week:
-                    day = bday_this_year.strftime("%A")  # день тижня
+                    day = bday_this_year.strftime("%A")
                     result.setdefault(day, []).append(record.name.value)
         return result
 
@@ -138,7 +138,7 @@ def show_phone(args, book: AddressBook):
 
 
 @input_error
-def show_all(args, book: AddressBook):
+def show_all(book: AddressBook):
     if not book.data:
         return "Address book is empty."
     return "\n".join(str(record) for record in book.data.values())
